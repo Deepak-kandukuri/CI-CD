@@ -41,3 +41,6 @@ sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin/linux-x86-64$ ./sonar.sh
 Starting SonarQube...
 Started SonarQube.
 sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin/linux-x86-64$
+
+
+account>>security>>generate token
