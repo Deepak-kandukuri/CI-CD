@@ -33,4 +33,6 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 docker pipeline and sonarqube scanner install
 
-
+sudo apt update
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu
