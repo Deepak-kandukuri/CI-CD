@@ -46,3 +46,44 @@ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releas
 kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
 
 kubectl get csv -n operators
+
+wait 2mins
+
+
+cat > argocd-basic.yml <<EOF
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: example-argocd
+spec:
+  server:
+    service:
+      type: NodePort
+EOF
+
+
+kubectl get pods
+
+kubectl get svc
+
+
+minikube service list
+
+
+
+kubectl port-forward svc/example-argocd-server 8080:80 --address 0.0.0.0
+
+Now open http://<EC2-Public-IP>:8080 and ec2 instance port should be open
+
+kubectl get secret
+
+
+kubectl edit secret example-argocd-cluster
+
+cope the password
+
+echo "ckdoVEhwM1Jzy0FnaW1ueUw2TnVPalplMzhrcTVXVXA=" | base64 -d
+
+facing any issue go to change server type in chatgpt
+
+
