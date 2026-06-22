@@ -1,1 +1,42 @@
+sudo apt update
 
+
+sudo apt install unzip
+
+sudo adduser sonarqube
+su sonarqube
+
+
+sonarqube@ip-172-31-87-136:/home/ubuntu$ pwd
+/home/ubuntu
+sonarqube@ip-172-31-87-136:/home/ubuntu$ cd ~
+sonarqube@ip-172-31-87-136:~$ pwd
+/home/sonarqube
+sonarqube@ip-172-31-87-136:~$ wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.4.1.88267.zip
+
+exit
+
+go to root user install unzip.
+
+go to SonarQube user and 
+unzip *
+
+
+
+
+sonarqube@ip-172-31-87-136:~$ ls
+sonarqube-10.4.1.88267  sonarqube-10.4.1.88267.zip
+sonarqube@ip-172-31-87-136:~$ chmod -R 755 /home/sonarqube/sonarqube-10.4.1.88267
+sonarqube@ip-172-31-87-136:~$ chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-10.4.1.88267
+sonarqube@ip-172-31-87-136:~$ cd sonarqube-10.4.1.88267/bin/
+sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin$ ls
+elasticsearch  linux-x86-64  macosx-universal-64  windows-x86-64  winsw-license
+sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin$ cd sonarqube-10.4.1.88267/bin/
+sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin$ cd linux-x86-64
+sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin/linux-x86-64$ ls
+sonar.sh
+sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin/linux-x86-64$ ./sonar.sh start
+/usr/bin/java
+Starting SonarQube...
+Started SonarQube.
+sonarqube@ip-172-31-87-136:~/sonarqube-10.4.1.88267/bin/linux-x86-64$
