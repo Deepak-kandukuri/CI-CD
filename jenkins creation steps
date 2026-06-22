@@ -36,3 +36,7 @@ docker pipeline and sonarqube scanner install
 sudo apt update
 sudo apt install docker.io -y
 sudo usermod -aG docker ubuntu
+
+
+generate token in sonarqube
+manage/credentials/store/system/global/add credential/secret text
