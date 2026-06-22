@@ -40,3 +40,9 @@ sudo usermod -aG docker ubuntu
 
 generate token in sonarqube
 manage/credentials/store/system/global/add credential/secret text
+
+
+docker cerdentials username and password 
+docker-cred name tho add
+
+
