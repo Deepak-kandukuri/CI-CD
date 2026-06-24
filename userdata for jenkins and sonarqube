@@ -1,0 +1,67 @@
+User Data is used for initial setup only, while systemd is used to ensure services run automatically after reboot or instance restart.
+
+#!/bin/bash
+exec > /var/log/user-data.log 2>&1
+
+# -------------------------
+# Update system
+# -------------------------
+apt update -y
+apt upgrade -y
+
+# -------------------------
+# Install Java
+# -------------------------
+apt install openjdk-21-jdk -y
+
+# -------------------------
+# Install required packages
+# -------------------------
+apt install curl wget gnupg2 ca-certificates software-properties-common apt-transport-https -y
+
+# -------------------------
+# Add Jenkins key & repo
+# -------------------------
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key | \
+tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | \
+tee /etc/apt/sources.list.d/jenkins.list
+
+# -------------------------
+# Install Jenkins + Docker
+# -------------------------
+apt update -y
+apt install jenkins -y
+apt install docker.io -y
+
+# -------------------------
+# Enable Docker (IMPORTANT)
+# -------------------------
+systemctl enable docker
+systemctl start docker
+
+# -------------------------
+# Add users to docker group
+# -------------------------
+usermod -aG docker ubuntu
+usermod -aG docker jenkins
+
+# -------------------------
+# Enable Jenkins (IMPORTANT)
+# -------------------------
+systemctl daemon-reload
+systemctl enable jenkins
+systemctl start jenkins
+
+# -------------------------
+# Firewall (optional)
+# -------------------------
+ufw allow 8080
+ufw --force enable
+
+# -------------------------
+# Log status
+# -------------------------
+systemctl status jenkins >> /var/log/user-data.log
+systemctl status docker >> /var/log/user-data.log
